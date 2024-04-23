@@ -8,7 +8,7 @@ const botonEliminarTabla = document.getElementById("botonEliminarTabla");
 
 
 const arregloProductos = [];
-let i = 0;
+let i = 1;
 
 guardarBoton.addEventListener("click",
 
@@ -55,11 +55,11 @@ function eliminarProd(id, nombreValor, descripcionValor, precioValor) {
                 <td>${nombreValor}</td>
                 <td>${descripcionValor}</td>
                 <td>${precioValor}</td>
-                <td><button class="btn btn-outline-danger" id="botonEliminarTabla">Elminiar</button></td>`
+                <td><button class="btn btn-outline-danger" id="botonEliminarTabla" dataset="${id}" onclick="funcionEliminar(${id})">Elminiar</button></td>`
     eliminarDiv.appendChild(tr);
 }
 
-botonEliminarTabla.addEventListener("click",
-    function () {
-
-    })
+const funcionEliminar = (id) => {
+    arregloProductos.pop();
+    console.log(arregloProductos);
+}
