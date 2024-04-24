@@ -37,16 +37,35 @@ guardarBoton.addEventListener("click",
 
     });
 
-function mostrarProd(id, nombreValor, descripcionValor, precioValor) {
+function mostrarProd() {
     const div = document.createElement("div");
-    div.innerHTML = `<div class="col-3 border border-3 border-danger p-2 m-2 contenedorProd">
-        <h3>-#${id}</h3>
-        <h3>-${nombreValor}</h3>
-        <P>-${descripcionValor}</P>
-        <h5>-$${precioValor}</h5>
+    div.innerHTML = ""
+    arregloProductos.forEach(productoNew => {
+        div.innerHTML =`<div class="col-3 border border-3 border-danger p-2 m-2 contenedorProd">
+        <h3>-#${productoNew.id}</h3>
+        <h3>-${productoNew.nombreValor}</h3>
+        <P>-${productoNew.descripcionValor}</P>
+        <h5>-$${productoNew.precioValor}</h5>
     </div>`
     contenedorProd.appendChild(div);
+    });
 }
+
+/*
+function mostrarProd() {
+  listado.querySelector("tbody").innerHTML = ""
+  productos.forEach((producto) => {
+    const tr = document.createElement(`tr`);
+    tr.innerHTML = `
+    <td>#${producto.codigo}</td>
+    <td>${producto.nombre}</td>
+    <td>${producto.precio}</td>
+    <td>${producto.descripcion}</td>`;
+    tbodylistado.appendChild(tr);
+  });
+}
+*/
+
 
 function eliminarProd(id, nombreValor, descripcionValor, precioValor) {
 
@@ -62,4 +81,5 @@ function eliminarProd(id, nombreValor, descripcionValor, precioValor) {
 const funcionEliminar = (id) => {
     arregloProductos.pop();
     console.log(arregloProductos);
+    mostrarProd();
 }
